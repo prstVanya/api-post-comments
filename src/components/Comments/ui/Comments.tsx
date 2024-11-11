@@ -1,10 +1,10 @@
-import cls from './Comments.module.css';
 import { classNames } from 'utils/classNames/classNames';
 import avatar from 'assets/images/image.jpeg';
+import cls from './Comments.module.css';
 
 interface ICommentsData {
   className?: string;
-};
+}
 
 export const Comments = ({ className }: ICommentsData) => {
   return (
@@ -12,7 +12,7 @@ export const Comments = ({ className }: ICommentsData) => {
       <h2 className={classNames(cls.heading, {}, [])}>2 comments</h2>
       <ul className={classNames(cls.list, {}, [])}>
         <li className={classNames(cls.item, {}, [])}>
-          <img 
+          <img
             className={classNames(cls.avatar, {}, [])}
             alt='аватарка'
             src={avatar}
@@ -30,5 +30,5 @@ export const Comments = ({ className }: ICommentsData) => {
         </li>
       </ul>
     </section>
-  )
-}
+  );
+};
