@@ -1,8 +1,8 @@
-import cls from './Card.module.css';
 import { classNames } from 'utils/classNames/classNames';
 import Like from 'assets/icons/like.svg';
 import Trash from 'assets/icons/dislike.svg';
 import { useLocation } from 'react-router-dom';
+import cls from './Card.module.css';
 
 interface ICardData {
   className?: string;
@@ -18,11 +18,11 @@ export const Card = ({ className }: ICardData) => {
           His mother had always taught him
         </h2>
         <p className={classNames(cls.subtitle, {}, [])}>
-          His mother had always taught him not to ever think 
-          of himself as better than others. He'd tried to live 
-          by this motto. He never looked down on those who were 
-          less fortunate or who had less money than him. But 
-          the stupidity of the group of people he was talking 
+          His mother had always taught him not to ever think
+          of himself as better than others. He'd tried to live
+          by this motto. He never looked down on those who were
+          less fortunate or who had less money than him. But
+          the stupidity of the group of people he was talking
           to made him change his mind.
         </p>
       </div>
@@ -58,5 +58,5 @@ export const Card = ({ className }: ICardData) => {
         </ul>
       </div>
     </li>
-  )
-}
+  );
+};

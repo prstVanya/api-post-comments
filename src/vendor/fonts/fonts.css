@@ -1,0 +1,35 @@
+@font-face {
+  src: url('./SF-Pro-Rounded-Regular.woff') format('woff'),
+       url('./SF-Pro-Display-Regular.woff2') format('woff2');
+  font-family: 'SF-Pro-Regular';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  src: url('./SF-Pro-Rounded-Regular.woff') format('woff'),
+       url('./SF-Pro-Display-Regular.woff2') format('woff2');
+  font-family: 'SF-Pro-Regular';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  src: url('./SF-Pro-Display-Semibold.woff') format('woff'),
+       url('./SF-Pro-Display-Semibold.woff2') format('woff2');
+  font-family: 'SF-Pro-SemiBold';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  src: url('./SF-Pro-Text-Bold.woff') format('woff'),
+       url('./SF-Pro-Rounded-Bold.woff2') format('woff2');
+  font-family: 'SF-Pro-Bold';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

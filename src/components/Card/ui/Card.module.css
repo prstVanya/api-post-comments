@@ -14,16 +14,16 @@
 
 .heading {
   font-size: 28px;
-  font-weight: 700;
   line-height: 33px;
   margin: 0;
+  font-family: var(--font-bold);
 }
 
 .subtitle {
   font-size: 20px;
-  font-weight: 400;
   line-height: 20px;
   margin: 0;
+  font-family: var(--font-regular);
 }
 
 .status {
@@ -40,7 +40,7 @@
 }
 
 .like {
-  background: rgba(4, 4, 5, 0.04);
+  background: rgb(4 4 5 / 4%);
   display: flex;
   gap: 6px;
   border: none;
@@ -48,6 +48,7 @@
   box-sizing: border-box;
   padding: 8px 8px 8px 12px;
   height: 27px;
+  font-family: var(--font-regular);
   max-width: 97px;
 }
 
@@ -62,31 +63,31 @@
 .text {
   margin: 0;
   font-size: 14px;
-  font-weight: 400;
   line-height: 17px;
+  font-family: var(--font-regular);
 }
 
 .number {
-  color: rgb(4, 4, 5);
+  color: rgb(4 4 5);
   font-size: 14px;
-  font-weight: 400;
   line-height: 17px;
+  font-family: var(--font-regular);
 }
 
 .link {
   font-size: 14px;
-  font-weight: 400;
   line-height: 17px;
   margin: 0;
   color: var(--text-color-light);
+  font-family: var(--font-regular);
 }
 
 .date {
   font-size: 14px;
-  font-weight: 400;
   line-height: 17px;
   margin: 0;
-  color: rgba(4, 4, 5, 0.22);
+  color: rgb(4 4 5 / 22%);
+  font-family: var(--font-regular);
 }
 
 .list {
@@ -99,5 +100,6 @@
 
 .item {
   padding: 4px;
-  background-color: rgba(120, 120, 128, 0.08);
+  background-color: rgb(120 120 128 / 8%);
+  font-family: var(--font-regular);
 }
