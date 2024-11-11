@@ -1,0 +1,103 @@
+.card {
+  max-width: 676px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 33px;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.buttons {
+  display: flex;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+.like {
+  background: rgba(4, 4, 5, 0.04);
+  display: flex;
+  gap: 6px;
+  border: none;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 8px 8px 8px 12px;
+  height: 27px;
+  max-width: 97px;
+}
+
+.like:first-of-type {
+  border-radius: 50px 0 0 50px;
+}
+
+.like:last-of-type {
+  border-radius: 0 50px 50px 0;
+}
+
+.text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.number {
+  color: rgb(4, 4, 5);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.link {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  margin: 0;
+  color: var(--text-color-light);
+}
+
+.date {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  margin: 0;
+  color: rgba(4, 4, 5, 0.22);
+}
+
+.list {
+  display: flex;
+  margin: 0;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  padding: 4px;
+  background-color: rgba(120, 120, 128, 0.08);
+}
