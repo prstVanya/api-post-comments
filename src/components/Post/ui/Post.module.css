@@ -1,0 +1,9 @@
+.post {
+  max-width: 676px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  margin: 58px auto 0;
+  padding: 0;
+}

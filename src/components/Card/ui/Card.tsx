@@ -2,12 +2,15 @@ import cls from './Card.module.css';
 import { classNames } from 'utils/classNames/classNames';
 import Like from 'assets/icons/like.svg';
 import Trash from 'assets/icons/dislike.svg';
+import { useLocation } from 'react-router-dom';
 
 interface ICardData {
   className?: string;
 }
 
 export const Card = ({ className }: ICardData) => {
+  const location = useLocation();
+
   return (
     <li className={classNames(cls.card, {}, [className])}>
       <div className={classNames(cls.block, {}, [])}>
@@ -36,7 +39,11 @@ export const Card = ({ className }: ICardData) => {
             <p className={classNames(cls.number, {}, [])}>25</p>
           </button>
         </div>
-        <a className={classNames(cls.link, {}, [])}>Open comments</a>
+        { location.pathname === '/' ? (
+          <a className={classNames(cls.link, {}, [])}>Open comments</a>
+        ) : (
+          null
+        )}
         <p className={classNames(cls.date, {}, [])}>Today</p>
         <ul className={classNames(cls.list, {}, [])}>
           <li className={classNames(cls.item, {}, [])}>
