@@ -1,0 +1,59 @@
+.like {
+  background: rgb(4 4 5 / 4%);
+  display: flex;
+  gap: 6px;
+  border: none;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 8px 8px 8px 12px;
+  height: 27px;
+  font-family: var(--font-regular);
+  max-width: 50%;
+  transition: opacity .3s ease;
+  cursor: pointer;
+}
+
+.like.activeLight {
+  background-color: rgb(255 59 48);
+  color: rgb(4 4 5);
+}
+
+.like.activeDark {
+  background-color: rgb(4 4 5);
+  color: rgb(255 255 255 / 95%);
+}
+
+.like:hover {
+  opacity: .5;
+}
+
+.like:first-of-type {
+  border-radius: 50px 0 0 50px;
+}
+
+.like:last-of-type {
+  border-radius: 0 50px 50px 0;
+}
+
+.text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 17px;
+  font-family: var(--font-regular);
+}
+
+.number {
+  color: rgb(4 4 5);
+  opacity: 0.4;
+  font-size: 14px;
+  line-height: 17px;
+  font-family: var(--font-regular);
+}
+
+.number.light {
+  color: rgb(255 255 255 / 95%);
+}
+
+.number.light:first-of-type {
+  opacity: 1;
+}

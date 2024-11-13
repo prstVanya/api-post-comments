@@ -7,5 +7,5 @@ interface ILoadingProps {
 export const Loading = ({ className }: ILoadingProps) => {
   return (
     <div className={classNames('lds-dual-ring', {}, [className])}></div>
-  )
-}
+  );
+};
