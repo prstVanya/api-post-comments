@@ -8,9 +8,9 @@ class WebApi extends Api {
 
   getCards():Promise<IPostItem[]> {
     return this.get('/posts')
-      .then((data: ApiListResponse<IPostItem>) => {
-        const all = data.items.slice(0, 5).map((c) => ({ ...c }));
-        return all;
+      .then((data: { posts: IPostItem[] }) => {
+        const items = data?.posts ?? [];
+        return items.slice(0, 5).map((c) => ({ ...c }));
       });
   }
 
