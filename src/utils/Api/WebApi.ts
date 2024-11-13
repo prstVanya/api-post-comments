@@ -20,14 +20,6 @@ class WebApi extends Api {
         return data.items.map((comment) => ({ ...comment }));
       });
   }
-
-  putLike(id: string):Promise<IPostItem[]> {
-    return this.put(`/posts${id}`, { });
-  }
-
-  deleteLike(id: string):Promise<IPostItem[]> {
-    return this.delete(`/posts${id}`, { });
-  }
 }
 
 export const apiPost = new WebApi('https://dummyjson.com');

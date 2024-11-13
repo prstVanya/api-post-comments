@@ -1,14 +1,22 @@
 import { classNames } from 'utils/classNames/classNames';
-import Like from 'assets/icons/like.svg';
-import Trash from 'assets/icons/dislike.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { startTransition } from 'react';
-import cls from './Card.module.css';
+import { startTransition, useState } from 'react';
 import { IPostItem } from 'types';
+import { LikeDisslike } from 'components/LikeDisslike';
+import cls from './Card.module.css';
 
 export const Card = ({ post, className }: { post: IPostItem; className?: string }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [activeButton, setActiveButton] = useState<'like' | 'dislike' | null>(null);
+
+  const handleLikeClick = () => {
+    setActiveButton(activeButton === 'like' ? null : 'like');
+  };
+
+  const handleDislikeClick = () => {
+    setActiveButton(activeButton === 'dislike' ? null : 'dislike');
+  };
 
   const handleClickToLink = () => {
     startTransition(() => {
@@ -28,16 +36,18 @@ export const Card = ({ post, className }: { post: IPostItem; className?: string 
       </div>
       <div className={classNames(cls.status, {}, [])}>
         <div className={classNames(cls.buttons, {}, [])}>
-          <button className={classNames(cls.like, {}, [])}>
-            <Like />
-            <p className={classNames(cls.text, {}, [])}>Like</p>
-            <p className={classNames(cls.number, {}, [])}>{post.reactions.likes}</p>
-          </button>
-          <button className={classNames(cls.like, {}, [])}>
-            <Trash />
-            <p className={classNames(cls.text, {}, [])}>Trash</p>
-            <p className={classNames(cls.number, {}, [])}>{post.reactions.dislikes}</p>
-          </button>
+          <LikeDisslike
+            isOnClick={activeButton === 'like'}
+            isLike={true}
+            isClick={handleLikeClick}
+            like={post.reactions.likes}
+          />
+          <LikeDisslike
+            isOnClick={activeButton === 'dislike'}
+            isLike={false}
+            isClick={handleDislikeClick}
+            like={post.reactions.dislikes}
+          />
         </div>
         { location.pathname === '/' ? (
           <button
@@ -55,7 +65,7 @@ export const Card = ({ post, className }: { post: IPostItem; className?: string 
               <li key={i} className={classNames(cls.item, {}, [])}>
                 <p className={classNames(cls.itext, {}, [])}>{tags}</p>
               </li>
-            )
+            );
           })}
         </ul>
       </div>
