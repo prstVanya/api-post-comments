@@ -3,7 +3,7 @@ export type ApiListResponse<Type> = {
   items: Type[]
 };
 
-export type ApiPostMethods = 'POST' | 'PUT' | 'DELETE';
+export type ApiPostMethods = 'GET' | 'PUT' | 'DELETE';
 
 export class Api {
   readonly baseUrl: string;
@@ -33,11 +33,19 @@ export class Api {
     }).then(this.handleResponse);
   }
 
-  delete(uri: string, data: object, method: ApiPostMethods = 'DELETE') {
+  put(uri: string, data: object, method: ApiPostMethods = 'PUT') {
     return fetch(this.baseUrl + uri, {
       ...this.options,
       method,
       body: JSON.stringify(data),
+    }).then(this.handleResponse);
+  }
+
+  delete(uri: string, data?: object, method: ApiPostMethods = 'DELETE') {
+    return fetch(this.baseUrl + uri, {
+      ...this.options,
+      method,
+      body: data ? JSON.stringify(data) : undefined,
     }).then(this.handleResponse);
   }
 }

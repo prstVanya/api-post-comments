@@ -1,7 +1,8 @@
 import { classNames } from 'utils/classNames/classNames';
 import Like from 'assets/icons/like.svg';
 import Trash from 'assets/icons/dislike.svg';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { startTransition } from 'react';
 import cls from './Card.module.css';
 
 interface ICardData {
@@ -10,6 +11,13 @@ interface ICardData {
 
 export const Card = ({ className }: ICardData) => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleClickToLink = () => {
+    startTransition(() => {
+      navigate('/post');
+    });
+  };
 
   return (
     <li className={classNames(cls.card, {}, [className])}>
@@ -19,7 +27,7 @@ export const Card = ({ className }: ICardData) => {
         </h2>
         <p className={classNames(cls.subtitle, {}, [])}>
           His mother had always taught him not to ever think
-          of himself as better than others. He'd tried to live
+          of himself as better than others. Hed tried to live
           by this motto. He never looked down on those who were
           less fortunate or who had less money than him. But
           the stupidity of the group of people he was talking
@@ -40,7 +48,11 @@ export const Card = ({ className }: ICardData) => {
           </button>
         </div>
         { location.pathname === '/' ? (
-          <a className={classNames(cls.link, {}, [])}>Open comments</a>
+          <button
+            onClick={handleClickToLink}
+            className={classNames(cls.link, {}, [])}>
+              Open comments
+            </button>
         ) : (
           null
         )}

@@ -79,7 +79,14 @@
   line-height: 17px;
   margin: 0;
   color: var(--text-color-light);
+  background-color: transparent;
+  border: none;
   font-family: var(--font-regular);
+  cursor: pointer;
+}
+
+.link:hover {
+  border-bottom: .5px solid rgba(255, 107, 0, 0.3);
 }
 
 .date {
