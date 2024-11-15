@@ -15,6 +15,7 @@ interface IPostData {
 const Post = ({ className }: IPostData) => {
   const [post, setPost] = useState<IPostItem | null>(null);
   const [comments, setComments] = useState<ICommentsItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -28,6 +29,8 @@ const Post = ({ className }: IPostData) => {
         setPost(postData as IPostItem);
       } catch (err) {
         console.error('Ошибка загрузки данных:', err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -36,12 +39,23 @@ const Post = ({ className }: IPostData) => {
 
   return (
     <main className={classNames(cls.post, {}, [className])}>
-      {post && <Card post={post} />}
-      {comments.length > 0 ? <Comments comments={comments} /> : (
+      {loading ? (
         <div className={classNames(cls.load, {}, [])}>
           <Loading />
         </div>
+      ) : (
+        <>
+          {post && <Card post={post} />}
+          {comments.length > 0 ? (
+            <Comments comments={comments} />
+          ) : (
+            <div className={classNames(cls.load, {}, [])}>
+              <p className={classNames(cls.text, {}, [])}>Nothing Comments</p>
+            </div>
+          )}
+        </>
       )}
+
     </main>
   );
 };
