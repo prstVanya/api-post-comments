@@ -1,35 +1,15 @@
 import { Card } from 'components/Card/ui/Card';
 import { classNames } from 'utils/classNames/classNames';
 import { IPostItem } from 'types';
-import { apiPost } from 'utils/Api/WebApi';
-import { useEffect, useState } from 'react';
 import { Loading } from 'components/Loading';
 import cls from './Cards.module.css';
 
 interface ICardsData {
   className?: string;
+  post: IPostItem[];
 }
 
-export const Cards = ({ className }: ICardsData) => {
-  const [post, setPost] = useState<IPostItem[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const loadingPost = async () => {
-      setLoading(true);
-      try {
-        const data = await apiPost.getCards();
-        console.log(data);
-        setPost(data);
-        setLoading(false);
-      } catch (err) {
-        console.error('Ошибка загрузки постов:', err);
-      }
-    };
-
-    loadingPost();
-  }, []);
-
+export const Cards = ({ className, post }: ICardsData) => {
   return (
     <ul className={classNames(cls.cards, {}, [className])}>
       {post.length > 0 ? (

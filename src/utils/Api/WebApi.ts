@@ -1,4 +1,4 @@
-import { IPostItem } from 'types';
+import { ICommentsItem, IPostItem } from 'types';
 import { Api, ApiListResponse } from './Api';
 
 class WebApi extends Api {
@@ -14,10 +14,18 @@ class WebApi extends Api {
       });
   }
 
-  getComments(id: string):Promise<IPostItem[]> {
-    return this.get(`posts/${id}/comments`)
-      .then((data: ApiListResponse<IPostItem>) => {
-        return data.items.map((comment) => ({ ...comment }));
+  getPost(id: number):Promise<IPostItem> {
+    return this.get(`/posts/${id}`)
+      .then((data: IPostItem) => {
+        return data;
+      });
+  }
+
+  getComments(id: string):Promise<ICommentsItem[]> {
+    return this.get(`/posts/${id}/comments`)
+      .then((data: { comments: ICommentsItem[] }) => {
+        const items = data?.comments ?? [];
+        return items.map((c) => ({ ...c }));
       });
   }
 }

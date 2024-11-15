@@ -5,7 +5,7 @@ import { IPostItem } from 'types';
 import { LikeDisslike } from 'components/LikeDisslike';
 import cls from './Card.module.css';
 
-export const Card = ({ post, className }: { post: IPostItem; className?: string }) => {
+export const Card = ({ post, className }: { post: IPostItem | null; className?: string }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeButton, setActiveButton] = useState<'like' | 'dislike' | null>(null);
@@ -20,7 +20,7 @@ export const Card = ({ post, className }: { post: IPostItem; className?: string 
 
   const handleClickToLink = () => {
     startTransition(() => {
-      navigate('/post');
+      navigate(`/post/${post?.id}`);
     });
   };
 
