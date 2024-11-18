@@ -7,3 +7,17 @@
   margin: 58px auto 0;
   padding: 0;
 }
+
+.load {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-bold);
+}

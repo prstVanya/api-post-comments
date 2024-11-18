@@ -84,4 +84,22 @@
   font-size: 13px;
   line-height: 12px;
   margin: 0;
+  cursor: pointer;
+}
+
+.block {
+  display: flex;
+  gap: 8px;
+}
+
+.return {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  font-family: var(--font-regular);
+  color: var(--text-color-light);
+  cursor: pointer;
 }
