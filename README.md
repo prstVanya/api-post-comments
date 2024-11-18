@@ -35,7 +35,7 @@ ____
 ## Установка проекта
 Клонирование проекта SSH:
 ```sh
-$ git clone git@github.com:VanyaGachist2/portfolio.git
+$ git clone git@github.com:prstVanya/api-post-comments.git
 ```
 
 Установка зависимостей:
