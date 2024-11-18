@@ -9,13 +9,35 @@ export const Card = ({ post, className }: { post: IPostItem | null; className?: 
   const location = useLocation();
   const navigate = useNavigate();
   const [activeButton, setActiveButton] = useState<'like' | 'dislike' | null>(null);
+  const [likes, setLikes] = useState(post?.reactions.likes || 0);
+  const [trash, setTrash] = useState(post?.reactions.dislikes || 0);
 
   const handleLikeClick = () => {
-    setActiveButton(activeButton === 'like' ? null : 'like');
+    if (activeButton === 'like') {
+      setActiveButton(null);
+      setLikes(likes - 1);
+    } else if (activeButton === 'dislike') {
+      setActiveButton('like');
+      setTrash(trash - 1);
+      setLikes(likes + 1);
+    } else {
+      setActiveButton('like');
+      setLikes(likes + 1);
+    }
   };
 
   const handleDislikeClick = () => {
-    setActiveButton(activeButton === 'dislike' ? null : 'dislike');
+    if (activeButton === 'dislike') {
+      setActiveButton(null);
+      setTrash(trash - 1);
+    } else if (activeButton === 'like') {
+      setActiveButton('dislike');
+      setLikes(likes - 1);
+      setTrash(trash + 1);
+    } else {
+      setActiveButton('dislike');
+      setTrash(trash + 1);
+    }
   };
 
   const handleClickToLink = () => {
@@ -40,13 +62,13 @@ export const Card = ({ post, className }: { post: IPostItem | null; className?: 
             isOnClick={activeButton === 'like'}
             isLike={true}
             isClick={handleLikeClick}
-            like={post.reactions.likes}
+            like={likes}
           />
           <LikeDisslike
             isOnClick={activeButton === 'dislike'}
             isLike={false}
             isClick={handleDislikeClick}
-            like={post.reactions.dislikes}
+            like={trash}
           />
         </div>
         { location.pathname === '/' ? (
