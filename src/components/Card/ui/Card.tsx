@@ -72,11 +72,3 @@ export const Card = ({ post, className }: { post: IPostItem | null; className?: 
     </li>
   );
 };
-
-/*
-  {post.tags.map((tag) => ()
-            <li  className={classNames(cls.item, {}, [])}>
-              <p className={classNames(cls.itext, {}, [])}>{tag}</p>
-            </li>
-          )}
-*/

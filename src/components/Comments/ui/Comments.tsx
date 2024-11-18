@@ -1,32 +1,37 @@
 import { classNames } from 'utils/classNames/classNames';
 import avatar from 'assets/images/image.jpeg';
 import { ICommentsItem } from 'types';
-import cls from './Comments.module.css';
 import { useState } from 'react';
+import cls from './Comments.module.css';
 
 export const Comments = (
-  { comments, className }: 
+  { comments, className }:
   { comments: ICommentsItem[]; className?: string; },
 ) => {
-  const [isDelete, setIsDelete] = useState<boolean>(false);
-  const [deletedCommentId, setDeletedCommentId] = useState<number | null>(null);
+  const [deletedComments, setDeletedComments] = useState<{ [key: number]: boolean }>({});
 
   const handleDeleteComment = (id: number) => {
-    setIsDelete(true);
-    setDeletedCommentId(id);
-  }
+    setDeletedComments((prev) => ({
+      ...prev,
+      [id]: true,
+    }));
+  };
 
-  const handleReturnComment = () => {
-    setIsDelete(false);
-    setDeletedCommentId(null);
-  }
+  const handleReturnComment = (id: number) => {
+    setDeletedComments((prev) => ({
+      ...prev,
+      [id]: false,
+    }));
+  };
 
   return (
     <section className={classNames(cls.comments, {}, [className])}>
       <h2 className={classNames(cls.heading, {}, [])}>{`${comments.length} comments`}</h2>
       <ul className={classNames(cls.list, {}, [])}>
-        {comments.map((c) => {
-          return (
+      {comments.map((c) => {
+        const isDeleted = deletedComments[c.id];
+
+        return (
             <li key={c.id} className={classNames(cls.item, {}, [])}>
               <img
                 className={classNames(cls.avatar, {}, [])}
@@ -35,14 +40,15 @@ export const Comments = (
               />
               <div className={classNames(cls.info, {}, [])}>
                 <h3 className={classNames(cls.name, {}, [])}>{c.user.username}</h3>
-                {isDelete && deletedCommentId === c.id ? (
+
+                {!isDeleted ? (
                   <>
                     <p className={classNames(cls.text, {}, [])}>
                       {c.body}
                     </p>
                     <div className={classNames(cls.buttons, {}, [])}>
                       <p className={classNames(cls.date, {}, [])}>Today</p>
-                      <button 
+                      <button
                         className={classNames(cls.delete, {}, [])}
                         onClick={() => handleDeleteComment(c.id)}
                       >
@@ -51,50 +57,23 @@ export const Comments = (
                     </div>
                   </>
                 ) : (
-                  <>
+                  <div className={classNames(cls.block, {}, [])}>
                     <p className={classNames(cls.text, {}, [])}>
-                      His mother had always taught him
+                      This comment has been deleted.
                     </p>
                     <button
                       className={classNames(cls.return, {}, [])}
-                      onClick={handleReturnComment}
+                      onClick={() => handleReturnComment(c.id)}
                     >
                       Return
                     </button>
-                  </>
+                  </div>
                 )}
-                <p className={classNames(cls.text, {}, [])}>
-                  {c.body}
-                </p>
-                <div className={classNames(cls.buttons, {}, [])}>
-                  <p className={classNames(cls.date, {}, [])}>Today</p>
-                  <button className={classNames(cls.delete, {}, [])}>Delete</button>
-                </div>
               </div>
             </li>
-          );
-        })}
+        );
+      })}
       </ul>
     </section>
   );
 };
-
-/*
-  <li className={classNames(cls.item, {}, [])}>
-          <img
-            className={classNames(cls.avatar, {}, [])}
-            alt='аватарка'
-            src={avatar}
-          />
-          <div className={classNames(cls.info, {}, [])}>
-            <h3 className={classNames(cls.name, {}, [])}>Stas</h3>
-            <p className={classNames(cls.text, {}, [])}>
-              His mother had always taught him
-            </p>
-            <div className={classNames(cls.buttons, {}, [])}>
-              <p className={classNames(cls.date, {}, [])}>Today</p>
-              <button className={classNames(cls.delete, {}, [])}>Delete</button>
-            </div>
-          </div>
-        </li>
-*/

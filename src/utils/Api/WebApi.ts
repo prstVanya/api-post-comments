@@ -1,5 +1,5 @@
 import { ICommentsItem, IPostItem } from 'types';
-import { Api, ApiListResponse } from './Api';
+import { Api } from './Api';
 
 class WebApi extends Api {
   constructor(baseUrl: string, options?: RequestInit) {
